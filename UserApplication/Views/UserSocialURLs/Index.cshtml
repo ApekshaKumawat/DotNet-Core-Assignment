@@ -1,0 +1,53 @@
+﻿@model UserApplication.Models.DashboardModel;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_DashboardNavbar.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" asp-controller="UserSocialURLs">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            @* <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th> *@
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SocialURLs)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.SocialURLs)
+        {
+        <tr>
+          @*<td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            <td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.SocialMediaPlatformName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SocialMediaPlatformURL)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.UserSocialURLsId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.UserSocialURLsId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.UserSocialURLsId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<a asp-action="Create">
+    Add more profiles
+</a>
